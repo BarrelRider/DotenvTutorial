@@ -7,26 +7,53 @@ async function getCharacterById(id) {
     return response.data;
 }
 
+async function getCharacters() {
+    const response = await axios.get(`${process.env.API}/character`);
+    return response.data;
+}
+
 router.get('/', (req, res, next) => {
-    res.send({
-        path: "root",
-        env: process.env.SECRET_KEY
+    getCharacters().then(data => {
+        let characters = [...data.results];
+
+        res.render('index', {
+            characters
+        });
+        next();
     });
-    next()
 });
 
-router.get('/characterepisodes', (req, res, next) => {
-    getCharacterById(1).then(data => {
+router.get('/detail/:id', (req, res, next) => {
+    const id = req.params.id;
+    getCharacterById(id).then(data => {
+        console.log(data);
+
         const episodesIdlist = [...data.episode].map(episode => {
             let episodeId = episode.replace(/[\w].+\//g, '');
             return episodeId;
         })
-        res.send({
-            episodesIdlist: episodesIdlist,
-            episodes: data.episode
+        res.render('detail', {
+            name: data.name,
+            status: data.status,
+            gender: data.gender,
+            avatar: data.image
         });
+        next();
     });
-});
+})
+
+// router.get('/characterepisodes', (req, res, next) => {
+//     getCharacterById(1).then(data => {
+//         const episodesIdlist = [...data.episode].map(episode => {
+//             let episodeId = episode.replace(/[\w].+\//g, '');
+//             return episodeId;
+//         })
+//         res.send({
+//             episodesIdlist: episodesIdlist,
+//             episodes: data.episode
+//         });
+//     });
+// });
 
 
 

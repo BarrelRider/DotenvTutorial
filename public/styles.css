@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+    body {
+      background-color: navy;
+    }
+
+    p, h1, h2, h3, a, ul{
+      margin: 0;
+      padding: 0;
+      text-decoration: none;
+      color: #e5b6e6;
+    }
+
+    footer {
+      display: flex;
+      justify-content: center;
+      padding: 24px;
+      color: #e5b6e6;
+    }
+
+    /*Character Card*/
+    .character-card {
+      position: relative;
+    }
+
+    .character-card__image{
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .character-card__info {
+      padding: 12px 4px;
+    }
+
+    .character-card__info.character-card__info--centered {
+      text-align: center;
+    }
+
+    /*Navbar*/
+
+    .rick-morty-navbar {
+      font-size: 20px;
+    }
+
+    .rick-morty-navbar .navbar-nav .nav-item .nav-link {
+      color: #e5b6e6;
+      transition: color .3s ease-in-out;
+    }
+
+    .rick-morty-navbar .navbar-nav .nav-item:first-child .nav-link,
+    .rick-morty-navbar .navbar-nav .nav-item:last-child .nav-link {
+      padding-left: 0;
+      padding-right: 0
+    }
+    
+    .rick-morty-navbar .navbar-nav .nav-link:hover {
+      color: #111
+    }
+
+
+    /* color: #8484e6; */
+    /* color: #e5b6e6; */
+
+    .character-detail-wrapper ul li {
+      display: block;
+    }
