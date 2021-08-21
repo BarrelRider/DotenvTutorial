@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const axios = require('axios');
+const {API} = require('../utils/constants');
 
 async function getEpisodesById(id) {
-    const response = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
+    const response = await axios.get(`${API}/character/${id}`);
     return response.data;
 }
 
