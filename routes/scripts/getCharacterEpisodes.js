@@ -6,3 +6,4 @@ async function getCharacterEpisodes(idList) {
 }
 
 module.exports = getCharacterEpisodes;
+
