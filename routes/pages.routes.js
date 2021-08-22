@@ -41,7 +41,8 @@ router.get('/detail/:id', (req, res, next) => {
             name: data.name,
             status: data.status,
             gender: data.gender,
-            avatar: data.image
+            avatar: data.image,
+            species: data.species,
         });
         next();
     });
