@@ -5,12 +5,20 @@ const Character = require('../models/character');
 
 async function getCharacterById(id) {
     const response = await axios.get(`${process.env.API}/character/${id}`);
-    return response.data;
+    const episodesIdlist = [...response.data.episode].map(episode => {
+        let episodeId = episode.replace(/[\w].+\//g, '');
+        return episodeId;
+    });
+    
+    const episodeList = await getCharacterEpisodes(episodesIdlist);
+    return {
+        ...response.data,
+        episodeList
+    };
 }
 
 async function getCharacterEpisodes(idList) {
-    let ids = [...idList].join(',');
-    const response = await axios.get(`${process.env.API}/episode/${ids}`)
+    const response = await axios.get(`${process.env.API}/episode/${idList}`)
     return response.data;
 }
 
@@ -27,7 +35,6 @@ async function getCharacters() {
 router.get('/', (req, res, next) => {
     getCharacters().then(data => {
         let characters = [...data.results];
-
         res.render('index', {
             characters
         });
@@ -35,46 +42,31 @@ router.get('/', (req, res, next) => {
     });
 });
 
-router.get('/detail/:id', (req, res, next) => {
+router.get('/detail/character/:id', (req, res, next) => {
     const id = req.params.id;
     getCharacterById(id).then(data => {
-        console.log(data);
-        const episodesIdlist = [...data.episode].map(episode => {
-            let episodeId = episode.replace(/[\w].+\//g, '');
-            return episodeId;
-        });
-
         const character = new Character(data);
-        character.episodes = episodesIdlist;
-
-        return character
-    }).then(character => {
+        
+        character.episodes = data.episodeList.length > 0 ? [...data.episodeList] : [data.episodeList];
+        return character;
+    })
+    .then(character => {
         res.render('detail', {
             character,
         })
         next();
     });
-})
+});
 
-// router.get('/characterepisodes', (req, res, next) => {
-//     getEpisodes().then(data => {
-//         console.log(data);
-//         res.send(data);
-//         next();
-//     });
-// });
+router.get('/detail/episode/:id', (req, res, next) => {
+    const id = req.params.id;
 
+    res.send({
+        id
+    });
 
+    next();
+});
 
-// getCharacterById(1).then(data => {
-//     const episodesIdlist = [...data.episode].map(episode => {
-//         let episodeId = episode.replace(/[\w].+\//g, '');
-//         return episodeId;
-//     })
-//     res.send({
-//         episodesIdlist: episodesIdlist,
-//         episodes: data.episode
-//     });
-// });
 
 module.exports = router;

@@ -34,12 +34,38 @@
             </div>
           </div>
           <div class="pb-3">
-            <div class="row">
-            <% character.episodes.forEach(episode=> { %>
-                <div class="col-lg-4">
-                  <span>Episode: <%= episode %> </span>
-                </div>
-                <% }) %>
+            <div class="episode-list" style="max-height: 450px; overflow-x: hidden; overflow-y: auto;">
+              <div class="row">
+                <% character.episodes.forEach(episode=> { %>
+                  <div class="col-lg-3">
+                    <a href="/detail/episode/<%= episode.id %>">
+                      <div class="p-2 h-100" title="<%= episode.name %> ">
+                        <!-- background-color: #16bc04; -->
+                        <div class="episode-list__item text-center"  style="color:#015693; height: 100%; 
+                        background-image: url('/assets/img/portal.png');
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                        background-position-x: center;
+                        background-color: #0190e3;
+                        border-radius: 20px;
+                        box-shadow: 3px 3px 6px 2px #015693;
+                        ">
+                          <p style="width: 100%; white-space: nowrap; padding: 0 16px; overflow: hidden; text-overflow: ellipsis;">
+                            <b>
+                              <%= episode.name %>
+                            </b>
+                          </p>
+                          <div>
+                            <p style="font-size: 96px;">
+                              <%= episode.id %>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <% }) %>
+              </div>
             </div>
           </div>
         </div>
