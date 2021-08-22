@@ -1,9 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const axios = require('axios');
+const Character = require('../models/character');
 
 async function getCharacterById(id) {
     const response = await axios.get(`${process.env.API}/character/${id}`);
+    return response.data;
+}
+
+async function getCharacterEpisodes(idList) {
+    let ids = [...idList].join(',');
+    const response = await axios.get(`${process.env.API}/episode/${ids}`)
     return response.data;
 }
 
@@ -32,18 +39,19 @@ router.get('/detail/:id', (req, res, next) => {
     const id = req.params.id;
     getCharacterById(id).then(data => {
         console.log(data);
-
         const episodesIdlist = [...data.episode].map(episode => {
             let episodeId = episode.replace(/[\w].+\//g, '');
             return episodeId;
-        })
-        res.render('detail', {
-            name: data.name,
-            status: data.status,
-            gender: data.gender,
-            avatar: data.image,
-            species: data.species,
         });
+
+        const character = new Character(data);
+        character.episodes = episodesIdlist;
+
+        return character
+    }).then(character => {
+        res.render('detail', {
+            character,
+        })
         next();
     });
 })

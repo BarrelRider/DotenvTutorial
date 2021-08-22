@@ -10,31 +10,36 @@
     <div class="container">
       <div class="character-card">
         <div class="character-card__content character-card__content--static">
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="character-card__media">
-                <img class="character-card__image" src="<%= avatar %> " alt="">
+          <div class="pb-3">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="character-card__media">
+                  <img class="character-card__image" src="<%= character.avatar %> " alt="">
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <ul class="character-card__info">
+                  <% Object.keys(character.info).forEach(infoKey=> { %>
+                    <li class="character-card__info-item">
+                      <span>
+                        <%= infoKey %>
+                      </span>
+                      <span><b>
+                          <%- character.info[infoKey] %>
+                        </b></span>
+                    </li>
+                    <% }) %>
+                </ul>
               </div>
             </div>
-            <div class="col-lg-8">
-              <ul class="character-card__info">
-                <li class="character-card__info-item">
-                  <span>Name: </span>
-                  <span><b><%- name %></b></span>
-                </li>
-                <li class="character-card__info-item">
-                  <span>Species: </span>
-                  <span><b><%- species %></b></span>
-                </li>
-                <li class="character-card__info-item">
-                  <span>Gender: </span>
-                  <span><b><%- gender %></b></span>
-                </li>
-                <li class="character-card__info-item">
-                  <span>Status: </span>
-                  <span><b><%- status %></b></span>
-                </li>
-              </ul>
+          </div>
+          <div class="pb-3">
+            <div class="row">
+            <% character.episodes.forEach(episode=> { %>
+                <div class="col-lg-4">
+                  <span>Episode: <%= episode %> </span>
+                </div>
+                <% }) %>
             </div>
           </div>
         </div>
