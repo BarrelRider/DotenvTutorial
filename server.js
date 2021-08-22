@@ -8,6 +8,9 @@ require('dotenv').config({
 });
 
 const app = express();
+
+app.set('view engine','ejs');
+app.use(express.static('public'));
 app.use(cors());
 app.use(express.json());
 app.disable('etag');
@@ -15,7 +18,7 @@ app.disable('etag');
 
 app.use('/', pagesRoute);
 
-app.all('*', (req, res) => {
+app.all((req, res) => {
     res.status(404).send("<h1>404 Not Found</h1>")
 })
 
