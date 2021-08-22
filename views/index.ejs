@@ -15,14 +15,16 @@
             <div class="col-lg-3">
               <a href="/detail/<%= character.id %>" class="title">
                 <div class="character-card">
-                  <div class="character-card__media">
-                    <img class="character-card__image" src="<%- character.image %> " alt="character">
+                  <div class="character-card__content">
+                    <div class="character-card__media">
+                      <img class="character-card__image" src="<%- character.image %> " alt="character">
+                    </div>
+                    <div class="character-card__info character-card__info--centered">
+                      <span>
+                        <%= character.name %>
+                      </span>
+                    </div>
                   </div>
-                  <div class="character-card__info character-card__info--centered">
-                    <span><%= character.name %></span>
-
-                  </div>
-
                 </div>
               </a>
             </div>

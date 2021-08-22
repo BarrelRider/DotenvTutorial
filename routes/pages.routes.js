@@ -12,6 +12,11 @@ async function getCharacters() {
     return response.data;
 }
 
+// async function getEpisodes() {
+//     const response = await axios.get(`${process.env.API}/episode`);
+//     return response.data
+// }
+
 router.get('/', (req, res, next) => {
     getCharacters().then(data => {
         let characters = [...data.results];
@@ -43,18 +48,24 @@ router.get('/detail/:id', (req, res, next) => {
 })
 
 // router.get('/characterepisodes', (req, res, next) => {
-//     getCharacterById(1).then(data => {
-//         const episodesIdlist = [...data.episode].map(episode => {
-//             let episodeId = episode.replace(/[\w].+\//g, '');
-//             return episodeId;
-//         })
-//         res.send({
-//             episodesIdlist: episodesIdlist,
-//             episodes: data.episode
-//         });
+//     getEpisodes().then(data => {
+//         console.log(data);
+//         res.send(data);
+//         next();
 //     });
 // });
 
 
+
+// getCharacterById(1).then(data => {
+//     const episodesIdlist = [...data.episode].map(episode => {
+//         let episodeId = episode.replace(/[\w].+\//g, '');
+//         return episodeId;
+//     })
+//     res.send({
+//         episodesIdlist: episodesIdlist,
+//         episodes: data.episode
+//     });
+// });
 
 module.exports = router;

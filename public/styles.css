@@ -20,6 +20,20 @@
     /*Character Card*/
     .character-card {
       position: relative;
+      padding-bottom: 12px;
+    }
+
+    .character-card__content {
+      padding: 16px;
+      background-color: #d35400;
+      border-radius: 20px;
+      box-shadow: 4px 4px 1px 1px #111;
+      transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+    }
+
+    .character-card__content:not(.character-card__content--static):hover {
+      transform: translate(4px, 4px);
+      box-shadow: none;
     }
 
     .character-card__image{
@@ -30,6 +44,10 @@
 
     .character-card__info {
       padding: 12px 4px;
+    }
+
+    .character-card__info-item {
+      display: block;
     }
 
     .character-card__info.character-card__info--centered {

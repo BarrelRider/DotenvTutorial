@@ -8,23 +8,32 @@
     </div>
 
     <div class="container">
-        <div class="row">
+      <div class="character-card">
+        <div class="character-card__content character-card__content--static">
+          <div class="row">
             <div class="col-lg-4">
-                <div>
-                    <img class="character-card__image" src="<%= avatar %> " alt="">
-                </div>
+              <div class="character-card__media">
+                <img class="character-card__image" src="<%= avatar %> " alt="">
+              </div>
             </div>
             <div class="col-lg-8">
-                <div class=""></div>
-                <ul>
-                    <li><%- name %></li>
-                    <li><%- status %></li>
-                    <li><%- gender %></li>
-                </ul>
+              <ul class="character-card__info">
+                <li class="character-card__info-item">
+                  <%- name %>
+                </li>
+                <li class="character-card__info-item">
+                  <%- status %>
+                </li>
+                <li class="character-card__info-item">
+                  <%- gender %>
+                </li>
+              </ul>
             </div>
+          </div>
         </div>
+      </div>
     </div>
-    
+
 
     <%- include('./partials/footer.ejs')%>
   </body>
