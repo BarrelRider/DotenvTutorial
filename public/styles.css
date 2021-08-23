@@ -25,6 +25,19 @@
       color: #e5b6e6;
     }
 
+    right-col-footer{
+      float: right;
+      margin: 6%;
+      margin-top: 120px;
+      display: flex;
+      align-items: center;
+    }
+
+    left-col-footer{
+      float: left;
+      margin: 6%;
+
+    }
     /*Character Card*/
     .character-card {
       position: relative;
