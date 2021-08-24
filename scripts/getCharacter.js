@@ -1,5 +1,4 @@
 const axios = require('axios');
-const getCharacterEpisodes = require('./getCharacterEpisodes');
 
 async function getCharacters() {
     const response = await axios.get(`${process.env.API}/character`);
@@ -7,13 +6,12 @@ async function getCharacters() {
 }
 
 async function getCharacterById(id) {
-    console.log(id);
     const response = await axios.get(`${process.env.API}/character/${id}`);
     const episodesIdlist = [...response.data.episode].map(episode => {
         let episodeId = episode.replace(/[\w].+\//g, '');
         return episodeId;
     });
-    
+
     const episodeList = await getCharacterEpisodes(episodesIdlist);
     return {
         ...response.data,
@@ -21,7 +19,13 @@ async function getCharacterById(id) {
     };
 }
 
+async function getCharacterEpisodes(idList) {
+    const response = await axios.get(`${process.env.API}/episode/${idList}`)
+    return response.data;
+}
+
 module.exports = {
     getCharacterById,
-    getCharacters
+    getCharacters,
+    getCharacterEpisodes
 };
