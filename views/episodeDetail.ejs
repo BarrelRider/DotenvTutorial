@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('./partials/head.ejs')%>
+
+  <body>
+    <div class="container">
+      <%- include('./partials/nav.ejs')%>
+    </div>
+    <div class="container">
+        <div class="character-card">
+          <div class="character-card__content character-card__content--static">
+            <div class="pb-3">
+                     
+                          <div class="col-lg-3">
+                            <p style="width: 100%; white-space: nowrap; padding: 0 16px; overflow: hidden; text-overflow: ellipsis;">
+                                Air Date : 
+                                <b>
+                                  <%= episode.air_date %>
+                                </b>
+                            </p>
+                              <div>
+                                <p style="width: 100%; white-space: nowrap; padding: 0 16px; overflow: hidden; text-overflow: ellipsis;">
+                                ID : 
+                                  <%= episode.id %>
+                                </p>
+                              </div>
+                          </div>
+                        
+            </div>
+            <%- include('./partials/footer.ejs')%>
+  </body>
+  </html>
