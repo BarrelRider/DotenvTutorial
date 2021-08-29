@@ -3,38 +3,40 @@
 <%- include('./partials/head.ejs')%>
 
   <body>
-    <div class="container">
+    <section id="top-navigation">
       <%- include('./partials/nav.ejs')%>
-    </div>
+    </section>
+    <section id="main">
+      <div class="container">
+        <% if (characters.length> 0) { %>
+          <div class="row">
+            <% characters.forEach(character=> { %>
 
-    <div class="container">
-      <% if (characters.length> 0) { %>
-        <div class="row">
-          <% characters.forEach(character=> { %>
-
-            <div class="col-lg-3">
-              <a href="/detail/character/<%= character.id %>" class="title">
-                <div class="character-card">
-                  <div class="character-card__content">
-                    <div class="character-card__media">
-                      <img class="character-card__image" src="<%- character.image %> " alt="character">
-                    </div>
-                    <div class="character-card__info character-card__info--centered">
-                      <span>
-                        <%= character.name %>
-                      </span>
+              <div class="col-lg-3">
+                <a href="/detail/character/<%= character.id %>" class="title">
+                  <div class="character-card">
+                    <div class="character-card__content">
+                      <div class="character-card__media">
+                        <img class="character-card__image" src="<%- character.image %> " alt="character">
+                      </div>
+                      <div class="character-card__info character-card__info--centered">
+                        <span>
+                          <%= character.name %>
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </a>
-            </div>
+                </a>
+              </div>
 
-            <% }) %>
-        </div>
-        <% } else { %>
-          <p>There are no names to display...</p>
-          <% } %>
-    </div>
+              <% }) %>
+          </div>
+          <% } else { %>
+            <p>There are no names to display...</p>
+            <% } %>
+      </div>
+    </section>
+
     <%- include('./partials/footer.ejs')%>
   </body>
 

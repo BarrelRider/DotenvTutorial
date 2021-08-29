@@ -1,13 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap');
+@import url('./assets/fonts/fonts.css');
     body {
-      background-color: navy;
+      background-color: #f0edf6;
+    }
+
+    body.schwifty-mode {
+      font-family: "Schwifty";
     }
 
     h1, h2, h3, a, ul{
       margin: 0;
       padding: 0;
       text-decoration: none;
-      color: #e5b6e6;
+      color: #e37ee6;
     }
 
     p {
@@ -22,26 +26,63 @@
       display: flex;
       justify-content: center;
       padding: 24px;
-      color: #e5b6e6;
+      color: #e37ee6;
+    }
+
+    .btn.btn-schwifty {
+      color: #e37ee6;
+      background-color: #fff;
+      border-color: #fff;
+    }
+
+    .btn.btn-schwifty:hover {
+      background-color: #e37ee6;
+      color: #fff
+
+    }
+
+    /* Top Navigation */
+
+    .top-navigation {
+      position: relative;
+      padding-bottom: 16px;
+    }
+
+    .top-navigation__content {
+      background-color: #60269e;
+      padding: 16px;
+    }
+
+    .top-navigation__title {
+      color: #eee;
     }
 
     /*Character Card*/
     .character-card {
       position: relative;
       padding-bottom: 12px;
+      height: 100%;
     }
 
     .character-card__content {
-      padding: 16px;
-      background-color: #d35400;
-      border-radius: 20px;
-      box-shadow: 4px 4px 1px 1px #111;
+      height: inherit;
+      position: relative;
+      border-radius: 16px;
+      background-color: #fff;
+      box-shadow: 1px 1px 1px 1px #999;
       transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+      display: flex;
+      flex-direction: column;
     }
 
     .character-card__content:not(.character-card__content--static):hover {
-      transform: translate(4px, 4px);
+      transform: translate(2px, 2px);
       box-shadow: none;
+    }
+
+    .character-card__media, .character-card__image {
+      border-top-left-radius: inherit;
+      border-top-right-radius: inherit;
     }
 
     .character-card__image{
@@ -51,7 +92,13 @@
     }
 
     .character-card__info {
+      flex: 1 0 auto;
+      width: 100%;
       padding: 12px 4px;
+      font-size: 24px;
+      background-color: inherit;
+      border-bottom-left-radius: inherit;
+      border-bottom-right-radius: inherit;
     }
 
     .character-card__info-item {
@@ -59,7 +106,10 @@
     }
 
     .character-card__info.character-card__info--centered {
+      display: flex;
+      align-items: center;
       text-align: center;
+      justify-content: center;
     }
 
     /*Navbar*/

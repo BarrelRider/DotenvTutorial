@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'Schwifty';
+    src: url('get_schwifty-webfont.woff2') format('woff2'),
+    url('get_schwifty-webfont.woff') format('woff'),
+    url('get_schwifty.ttf')  format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
