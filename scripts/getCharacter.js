@@ -1,7 +1,17 @@
 const axios = require('axios');
 
-async function getCharacters() {
-    const response = await axios.get(`${process.env.API}/character`);
+async function getCharacters(page) {
+    const response = await axios.get(`${process.env.API}/character?page=${page ? page : ""}`);
+    return response.data;
+}
+
+async function getBallFondlers() {
+    const response = await axios.get(`${process.env.API}/character/207,129,28,34`);
+    return response.data;
+}
+
+async function getPickleRick() {
+    const response = await axios.get(`${process.env.API}/character/265`);
     return response.data;
 }
 
@@ -27,5 +37,7 @@ async function getCharacterEpisodes(idList) {
 module.exports = {
     getCharacterById,
     getCharacters,
-    getCharacterEpisodes
+    getCharacterEpisodes,
+    getBallFondlers,
+    getPickleRick
 };
