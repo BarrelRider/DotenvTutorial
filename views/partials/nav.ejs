@@ -1,20 +1,19 @@
 <div class="top-navigation">
   <div class="top-navigation__content">
     <div class="container">
-      <a href="/">
-        <h1 class="top-navigation__title">Rick & Morty</h1>
-      </a>
-
       <div class="d-flex justify-content-end">
-        <button type="button" class="btn btn-schwifty" id="schwifty-mode">Toggle Schwifty Mode</button>
+        <button type="button" class="btn btn-schwifty" id="schwifty-mode">Schwifty</button>
       </div>
+      <a href="/">
+        <h1 class="top-navigation__title text-center">Rick & Morty</h1>
+      </a>
 
       <nav class="navbar rick-morty-navbar navbar-expand-lg p-0">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="/">Home</a>
@@ -26,6 +25,11 @@
               <a class="nav-link" href="/ballfondlers">Ball Fondlers</a>
             </li>
           </ul>
+          <div class="rick-morty__search">
+            <form id="rickle-search">
+                <input type="text" name="name" id="rickle-search-input" placeholder="Search Character" class="form-control">
+            </form>
+          </div>
         </div>
       </nav>
     </div>

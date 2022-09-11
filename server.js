@@ -18,9 +18,9 @@ app.disable('etag');
 
 app.use('/', pagesRoute);
 
-app.all((req, res) => {
+app.all('*', (req, res, next) => {
     res.status(404).send("<h1>404 Not Found</h1>")
-})
+});
 
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server is listening on', process.env.PORT || 3000)

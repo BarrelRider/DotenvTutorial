@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:dev": "cross-env NODE_ENV=dev nodemon server.js",
+    "start:dev": "cross-env NODE_ENV=dev nodemon --inspect server.js",
     "start:test": "cross-env NODE_ENV=test nodemon server.js"
   },
   "keywords": [],

@@ -1,16 +1,23 @@
 const CharacterMgr = require('../scripts/getCharacter');
 const Character = require('../models/character');
 
+/*TODO: Handle query strings for search operations */
 exports.getCharacters = (req, res, next) => {
-    const page = req.query.page || "";
-    CharacterMgr.getCharacters(page).then(data => {
+    const queryParams = new URLSearchParams(req.query).toString();
+    const page = req.query.page;
+    CharacterMgr.getCharacters(queryParams).then(data => {
         let characters = [...data.results];
         let info = data.info;
         res.render('index', {
             characters,
             info,
-            page,
         });
+    }).catch(err => {
+        res.render("index", {
+            characters: [],
+            info: null,
+            error: err.message
+        })
     });
 }
 

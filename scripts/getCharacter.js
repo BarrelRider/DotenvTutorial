@@ -1,7 +1,10 @@
 const axios = require('axios');
 
-async function getCharacters(page) {
-    const response = await axios.get(`${process.env.API}/character?page=${page ? page : ""}`);
+async function getCharacters(queryString) {
+    const response = await axios.get(`${process.env.API}/character?${queryString}`)
+        .catch(err => {
+            return err;
+        });
     return response.data;
 }
 

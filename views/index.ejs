@@ -8,6 +8,19 @@
     </section>
     <section id="main">
       <div class="container">
+        <% if(info) { %>
+          <div class="ricky-pagination-wrapper">
+            <% if(info.pages > 1) { %>
+              <ul class="ricky-pagination">
+                <% for(var i = 0; i < info.pages; i++) { %>
+                  <li class="ricky-pagination__item">
+                    <a href="/?page=<%= i+1 %>" class="ricky-pagination__link"><%= i+1 %></a>
+                  </li>
+                <% } %>
+              </ul>
+            <% } %>
+        </div>
+        <% } %>
         <% if (characters.length> 0) { %>
           <div class="row">
             <% characters.forEach(character=> { %>
@@ -32,7 +45,7 @@
               <% }) %>
           </div>
           <% } else { %>
-            <p>There are no names to display...</p>
+            <p><%= error %> </p>
             <% } %>
       </div>
     </section>
